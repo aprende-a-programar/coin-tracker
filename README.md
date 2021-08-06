@@ -2,10 +2,12 @@
 
 Para esta misión necesitamos crear una web utilizando HTML, CSS y Javascript (sin frameworks/librerías) que te permita buscar acciones/monedas o cualquier asset, de ahora en más llamados "monedas", usando una API gratuita como la de https://finnhub.io/docs/api/quote (o cualquier otra que te sea práctica) y agregarla a un listado de “monedas” que quieras seguir.
 
-La webapp debe consultar constantemente a la API para pedirle los valores actualizados y reflejarlos en la UI. Al mismo tiempo tendremos que poder configurar alertas para cada “moneda” que estemos siguiendo utilizando valores máximos y/o mínimos. Para notificar que una de las monedas está fuera de los límites vamos a modificar el favicon de la web (el que se muestra en la pestaña del navegador) para que podamos hacer seguimiento simplemente teniendo una pestaña abierta. En otras misiones llevaremos este esquema de notificaciones mucho más lejos.
+
+La webapp debe consultar constantemente a la API para pedirle los valores actualizados y reflejarlos en la UI. Al mismo tiempo tendremos que poder configurar alertas para cada “moneda” que estemos siguiendo utilizando valores máximos y/o mínimos. Para notificar que una de las monedas está fuera de los límites vamos a modificar el favicon de la web (el que se muestra en la pestaña del navegador) para que podamos hacer seguimiento simplemente teniendo una pestaña abierta ¡En otras misiones llevaremos este esquema de notificaciones mucho más lejos!
 
 ![image](https://user-images.githubusercontent.com/1208547/128564974-47acc718-11fe-404f-aad8-5415a148a214.png)
 
+Toda la configuración de las "monedas" (monedas y montos de las alertas) deben ser guardados en el navegador (localStorage puede ser una buena alternativa) para no perder toda esta config si salimos de la web.
 
 ## Para sumarse a esta misión
 
@@ -18,6 +20,7 @@ Cualquier duda o sugerencia la podemos charlar en el canal de Misión Código de
 Para encarar esta misión necesitan dominio básicos de HTML, CSS y Javascript (**módulo 4** de [la carrera](https://apx.school/carreras/dwf)) . Algunos de estos conocimientos básicos son:
 
 - Fetch: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+- localStorage: https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
 - DOM: https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model
 - CSS Grids - https://css-tricks.com/snippets/css/complete-guide-grid/
 - Flexbox - https://css-tricks.com/snippets/css/a-guide-to-flexbox/
