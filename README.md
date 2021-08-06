@@ -22,6 +22,7 @@ Para encarar esta misión necesitan dominio básicos de HTML, CSS y Javascript (
 - CSS Grids - https://css-tricks.com/snippets/css/complete-guide-grid/
 - Flexbox - https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 - Semántica - https://developer.mozilla.org/en-US/docs/Glossary/Semantics#semantics_in_html
+- Sobre cambiar el favicon - https://stackoverflow.com/questions/260857/changing-website-favicon-dynamically
 
 ## Recursos
 
