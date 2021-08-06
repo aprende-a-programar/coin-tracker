@@ -4,6 +4,9 @@ Para esta misión necesitamos crear una web utilizando HTML, CSS y Javascript (s
 
 La webapp debe consultar constantemente a la API para pedirle los valores actualizados y reflejarlos en la UI. Al mismo tiempo tendremos que poder configurar alertas para cada “moneda” que estemos siguiendo utilizando valores máximos y/o mínimos. Para notificar que una de las monedas está fuera de los límites vamos a modificar el favicon de la web (el que se muestra en la pestaña del navegador) para que podamos hacer seguimiento simplemente teniendo una pestaña abierta. En otras misiones llevaremos este esquema de notificaciones mucho más lejos.
 
+![image](https://user-images.githubusercontent.com/1208547/128564974-47acc718-11fe-404f-aad8-5415a148a214.png)
+
+
 ## Para sumarse a esta misión
 
 Recuerden enviar sus [PRs](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) y si publican sus webs (una alternativa es usar [GitHub Pages](https://pages.github.com/) suban una foto de su web (y la URL) a Instagran y nos mencionan https://www.instagram.com/apx.school/ para compartirles el proyecto.
