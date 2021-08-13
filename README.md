@@ -40,3 +40,7 @@ https://finnhub.io/docs/api/quote
 #### Otras alternativas
 
 https://medium.com/geekculture/the-best-free-stock-market-data-apis-available-in-2021-1ecfa51ee619
+
+## Resolución
+
+Les dejo el PR de la primera parte (lógica): https://github.com/apx-mision-codigo/coin-tracker/pull/1/files
