@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Lato", sans-serif;
+  margin: 0;
+  background-color: black;
+  color: white;
+  max-width: 768px;
+  margin: 0 auto;
+}
+.header {
+  padding: 25px;
+  text-align: right;
+}
+
+.logo {
+}
+
+.content {
+  padding: 25px;
+}
+
+.intro {
+}
+
+.intro-title {
+  font-family: "Arvo", serif;
+  font-weight: bold;
+  font-size: 36px;
+  margin: 0;
+}
+.intro-title-highlight {
+  color: #ff7a00;
+}
+.intro-img {
+}
+
+.search {
+}
+.search-title {
+  font-size: 18px;
+  font-weight: normal;
+  margin: 0 0 5px 0;
+}
+.search-form {
+  display: flex;
+  background-color: #232323;
+  border-radius: 8px;
+}
+.search-input {
+  flex-grow: 1;
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 14px;
+  padding: 11px 16px;
+}
+
+.button {
+  background-color: #ff7a00;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  color: black;
+}
+.search-button {
+}
+
+.search-result {
+  background-color: #232323;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8px;
+}
+.search-result-coin {
+  padding: 9px 6px;
+}
+.search-result-quote {
+  color: #4cd71d;
+  padding: 9px 6px;
+}
+.search-result-add-button {
+  background-color: #ff7a00;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.tracking {
+  margin-top: 20px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.coin-card {
+  position: relative;
+  background-color: #232323;
+  padding: 11px;
+  border-radius: 8px;
+}
+.coin-card-close-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  line-height: 1;
+  font-size: 20px;
+}
+.coin-card-basics {
+  display: flex;
+  margin-top: 30px;
+  justify-content: space-between;
+  align-items: center;
+}
+.coin-card-basics-title {
+  margin: 0;
+  font-size: 24px;
+}
+.coin-card-basics-subtitle {
+  font-size: 14px;
+}
+.coin-card-basics-icon {
+  font-size: 40px;
+}
+.coin-card-quote {
+  font-size: 18px;
+  color: #4cd71d;
+  font-weight: 900;
+}
+.coin-card-limits {
+}
+.coin-card-limit {
+  background-color: #404040;
+  padding: 9px;
+  border-radius: 4px;
+  width: 100%;
+  border: none;
+}
+.coin-card-limit--max {
+  position: relative;
+}
+
+.coin-card-limit--min {
+  margin-top: 10px;
+}
