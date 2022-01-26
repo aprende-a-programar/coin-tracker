@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="icon" type="image/png" id="icon-tag" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&family=Lato:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script async src="./coingecko.js"></script>
+    <script async src="./index.js"></script>
+  </head>
+  <body>
+    <div class="content__logo">
+      <img src="./images/Logo.png" alt="" class="logo" />
+    </div>
+    <div class="content__container">
+      <h1 class="title">
+        Chequea tus <span class="highlighted">inversiones</span> en un solo
+        lugar
+      </h1>
+      <img src="./images/Ilustraciones.png" alt="" class="image" />
+    </div>
+    <div class="search-track-container">
+      <div class="search__content">
+        <label for="" class="label">Buscá tus favoritas</label>
+        <form class="search-form">
+          <input
+            type="search"
+            id="search"
+            name="search"
+            placeholder="Ej. Bitcoin"
+            class="search-form__input"
+          />
+          <button type="submit" class="search-form__button">
+            <img src="./images/Vector (Stroke).png" alt="" />
+          </button>
+        </form>
+      </div>
+      <div class="track-container">
+        <ul class="track-list"></ul>
+      </div>
+    </div>
+
+    <div class="cards-container"></div>
+  </body>
+</html>
