@@ -268,6 +268,7 @@ function addCoin(id, symbol, quote, logo) {
 
 async function main() {
   config.loadPersistedConfig();
+  config.addSymbolToTrack("bitcoin", 0, 0);
   const idArray = config.getTrackSymbols();
   searchAndAddCoin();
   for (let price = 0; price < idArray.length; price++) {
