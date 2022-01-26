@@ -261,16 +261,15 @@ function addCoin(id, symbol, quote, logo) {
     e.preventDefault();
     renderCard(id, symbol, quote, logo);
     const cardDiv = document.getElementById(id);
-    config.loadPersistedConfig();
     config.addSymbolToTrack(cardDiv.id, 0, 0);
   });
 }
 
 async function main() {
-  config.loadPersistedConfig();
-  config.addSymbolToTrack("bitcoin", 0, 0);
+  config.persistConfig();
   const idArray = config.getTrackSymbols();
   searchAndAddCoin();
+  config.loadPersistedConfig();
   for (let price = 0; price < idArray.length; price++) {
     const element = idArray[price];
     const maxValue = config.getMax(element);
@@ -281,7 +280,6 @@ async function main() {
     const symbolCoin = respuesta.symbol.toUpperCase();
     const quote = respuesta.market_data.current_price.usd;
     renderCard(element, symbolCoin, quote, imageLogo);
-    addCoin(element, symbolCoin, quote, imageLogo);
     const cardDiv = document.getElementById(element);
     const maxButtonEl = cardDiv.querySelector(".max");
     const minButtonEl = cardDiv.querySelector(".min");
