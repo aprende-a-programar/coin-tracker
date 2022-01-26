@@ -159,6 +159,7 @@ function searchAndAddCoin() {
       const nameCoin = respuesta.name;
       renderResult(element, nameCoin, quote);
       addCoin(element, symbolCoin, quote, imageLogo);
+      config.loadPersistedConfig();
     }
 
     //CLEAN INPUT VALUE
@@ -269,7 +270,7 @@ async function main() {
   config.persistConfig();
   const idArray = config.getTrackSymbols();
   searchAndAddCoin();
-  config.loadPersistedConfig();
+
   for (let price = 0; price < idArray.length; price++) {
     const element = idArray[price];
     const maxValue = config.getMax(element);
