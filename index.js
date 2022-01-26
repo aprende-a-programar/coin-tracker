@@ -29,10 +29,6 @@ const config = {
     localStorage.setItem("track-config", JSON.stringify(this.trackSymbols));
   },
   loadPersistedConfig() {
-    const persistedConfig = localStorage.getItem("track-config");
-    if (persistedConfig) {
-      this.trackSymbols = JSON.parse(persistedConfig);
-    }
     const saved = localStorage.getItem("track-config");
     this.trackSymbols = JSON.parse(saved);
   },
