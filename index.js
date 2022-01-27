@@ -258,7 +258,7 @@ function addCoin(id, symbol, quote, logo) {
     e.preventDefault();
     renderCard(id, symbol, quote, logo);
     const cardDiv = document.getElementById(id);
-    config.addSymbolToTrack(cardDiv.id, 0, 0);
+    config.addSymbolToTrack(id, 0, 0);
     minAndMaxValues(id);
   });
 }
