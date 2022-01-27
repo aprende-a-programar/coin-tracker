@@ -285,6 +285,8 @@ function minAndMaxValues(element) {
 
 async function main() {
   config.loadPersistedConfig();
+  //mock inicial
+  config.addSymbolToTrack("bitcoin", 0, 0);
   const idArray = config.getTrackSymbols();
   searchAndAddCoin();
   for (let i = 0; i < idArray.length; i++) {
