@@ -2,8 +2,7 @@ async function getQuotes(symbolsConfig) {
   const updated = {};
   for (const symbolName in symbolsConfig) {
     const quote = await quoteCoin(symbolName);
-    const cardDiv = document.getElementById(symbolName);
-    const currentCoinEl = cardDiv.querySelector(".current-coin-card");
+    const currentCoinEl = document.getElementById("current-coin" + symbolName);
     currentCoinEl.innerHTML = "USD $" + quote.market_data.current_price.usd;
     updated[symbolName] = quote.market_data.current_price.usd;
   }
@@ -32,7 +31,6 @@ const config = {
     const saved = localStorage.getItem("track-config");
     this.trackSymbols = JSON.parse(saved);
   },
-  // obtener los solo los id de trackSymbols guardados en localStorage
   getTrackSymbols() {
     const trackSymbols = [];
     for (const symbol in this.trackSymbols) {
@@ -50,7 +48,6 @@ const config = {
     return this.trackSymbols[id].currentQuote;
   },
 
-  // actualizar y chequear las quotes
   removeSymbolToTrack(symName) {
     delete this.trackSymbols[symName];
     this.persistConfig();
@@ -97,39 +94,38 @@ function fireAlert(symbol, symbolConfig) {
 
 //Functions
 
-function renderResult(id, result, quote) {
+function renderResult(id, symbolCoin, result, quote) {
   const trackList = document.querySelector(".track-list");
   //Track DIV
   const trackDiv = document.createElement("div");
   trackDiv.classList.add("track");
   //create li and span
   const newTrackItem = document.createElement("li");
+  const newTrackName = document.createElement("li");
   const newTrackQuote = document.createElement("span");
 
-  newTrackItem.innerText = result;
-
+  newTrackItem.innerText = symbolCoin;
   newTrackItem.classList.add("track-item");
   trackDiv.appendChild(newTrackItem);
 
-  newTrackQuote.innerHTML = "USD $" + quote;
+  newTrackName.innerText = "( 1 " + result + " )";
+  newTrackName.classList.add("track-item-name");
+  trackDiv.appendChild(newTrackName);
 
+  newTrackQuote.innerHTML = "USD $" + quote;
   newTrackQuote.classList.add("track-item-price");
   trackDiv.appendChild(newTrackQuote);
 
-  //ADD track localStorage
-
-  //Check addButton
   const addButton = document.createElement("button");
   addButton.textContent = "Track +";
   addButton.classList.add("add-btn");
   addButton.type = "submit";
-  addButton.id = id;
+  addButton.id = "add-button" + id;
   trackDiv.appendChild(addButton);
-  //Append to result
   trackList.appendChild(trackDiv);
 }
 
-function searchAndAddCoin() {
+async function searchAndAddCoin() {
   const formEl = document.querySelector(".search-form");
   const inputEl = document.querySelector(".search-form__input");
   const buttonSearchEl = document.querySelector(".search-form__button");
@@ -140,25 +136,21 @@ function searchAndAddCoin() {
     if (query === "") {
       return;
     }
-    //const searchResults = await searchStocks(query);
     const searchResults = await searchCoinStocks(query);
     const arrayResult = searchResults.coins;
 
     const idArray = arrayResult.map((t) => t.id);
-    console.log(idArray);
-    for (let price = 0; price < idArray.length; price++) {
-      const element = idArray[price];
+    for (let i = 0; i < idArray.length; i++) {
+      const element = idArray[i];
       const respuesta = await quoteCoin(element);
       const imageLogo = respuesta.image.small;
       const symbolCoin = respuesta.symbol.toUpperCase();
       const quote = respuesta.market_data.current_price.usd;
       const nameCoin = respuesta.name;
-      renderResult(element, nameCoin, quote);
+      renderResult(element, symbolCoin, nameCoin, quote);
       addCoin(element, symbolCoin, quote, imageLogo);
-      config.loadPersistedConfig();
     }
 
-    //CLEAN INPUT VALUE
     inputEl.value = "";
 
     buttonSearchEl.addEventListener("focus", () => {
@@ -196,15 +188,22 @@ function renderCard(id, symbol, quote, logo) {
   coinTitle.innerHTML = symbol;
   coinTitle.classList.add("coin-title");
   coinLogoDiv.appendChild(coinTitle);
+
   const coinLogo = document.createElement("img");
   coinLogo.classList.add("logo_card");
   coinLogo.src = logo;
   coinLogoDiv.appendChild(coinLogo);
 
+  const coinName = document.createElement("h4");
+  coinName.innerHTML = "( 1 " + id + " )";
+  coinName.classList.add("coin-name-card");
+  cardDiv.appendChild(coinName);
+
   //Create Current Coin
   const currentCoinEl = document.createElement("h3");
   currentCoinEl.innerHTML = "USD $" + quote;
   currentCoinEl.classList.add("current-coin-card");
+  currentCoinEl.id = "current-coin" + id;
   cardDiv.appendChild(currentCoinEl);
   //Add to localStorage
 
@@ -221,10 +220,12 @@ function renderCard(id, symbol, quote, logo) {
   inputMaxEl.type = "text";
   inputMaxEl.placeholder = "Ej. $50000";
   inputMaxEl.classList.add("card-max-input");
+  inputMaxEl.id = "max-input" + id;
   formMaxEl.appendChild(inputMaxEl);
   const buttonMaxEl = document.createElement("button");
   buttonMaxEl.innerHTML = '<img src="./images/max-button.png" alt=""  />';
   buttonMaxEl.classList.add("max");
+  buttonMaxEl.id = "max-button" + id;
   formMaxEl.appendChild(buttonMaxEl);
 
   //Create Form Min
@@ -235,74 +236,70 @@ function renderCard(id, symbol, quote, logo) {
   inputMinEl.type = "text";
   inputMinEl.placeholder = "Ej. $30000";
   inputMinEl.classList.add("card-min-input");
+  inputMinEl.id = "min-input" + id;
   formMinEl.appendChild(inputMinEl);
   const buttonMinEl = document.createElement("button");
   buttonMinEl.innerHTML = '<img src="./images/min-button.png" alt=""  />';
   buttonMinEl.classList.add("min");
+  buttonMinEl.id = "min-button" + id;
   formMinEl.appendChild(buttonMinEl);
 
-  //Append to result
   cardContainer.appendChild(cardDiv);
 
-  //REMOVE CARD
   buttonCross.addEventListener("click", (e) => {
     e.preventDefault();
     cardDiv.remove();
-    //REMOVE FROM LOCAL STORAGE
     config.removeSymbolToTrack(id);
   });
 }
 function addCoin(id, symbol, quote, logo) {
-  const addButtonEl = document.getElementById(id);
+  const addButtonEl = document.getElementById("add-button" + id);
   addButtonEl.addEventListener("click", (e) => {
     e.preventDefault();
     renderCard(id, symbol, quote, logo);
     const cardDiv = document.getElementById(id);
     config.addSymbolToTrack(cardDiv.id, 0, 0);
+    minAndMaxValues(id);
+  });
+}
+function minAndMaxValues(element) {
+  const maxButtonEl = document.getElementById("max-button" + element);
+  const minButtonEl = document.getElementById("min-button" + element);
+
+  maxButtonEl.addEventListener("click", (e) => {
+    e.preventDefault();
+    const maxInputEl = document.getElementById("max-input" + element);
+    const maxValueInput = maxInputEl.value;
+    const minValue = config.getMin(element);
+    config.addSymbolToTrack(element, minValue, maxValueInput);
+  });
+
+  minButtonEl.addEventListener("click", (e) => {
+    e.preventDefault();
+    const minInputEl = document.getElementById("min-input" + element);
+    const minValueInput = minInputEl.value;
+    const maxValue = config.getMax(element);
+    config.addSymbolToTrack(element, minValueInput, maxValue);
   });
 }
 
 async function main() {
-  config.persistConfig();
+  config.loadPersistedConfig();
   const idArray = config.getTrackSymbols();
   searchAndAddCoin();
-
-  for (let price = 0; price < idArray.length; price++) {
-    const element = idArray[price];
-    const maxValue = config.getMax(element);
-    const minValue = config.getMin(element);
-    const currentQuote = config.getCurrentQuote(element);
-    const respuesta = await quoteCoin(element);
+  for (let i = 0; i < idArray.length; i++) {
+    const id = idArray[i];
+    const respuesta = await quoteCoin(id);
     const imageLogo = respuesta.image.small;
     const symbolCoin = respuesta.symbol.toUpperCase();
     const quote = respuesta.market_data.current_price.usd;
-    renderCard(element, symbolCoin, quote, imageLogo);
-    const cardDiv = document.getElementById(element);
-    const maxButtonEl = cardDiv.querySelector(".max");
-    const minButtonEl = cardDiv.querySelector(".min");
-
-    maxButtonEl.addEventListener("click", (e) => {
-      e.preventDefault();
-      const maxInputEl = cardDiv.querySelector(".card-max-input");
-      const maxValueInput = maxInputEl.value;
-      const minValue = config.getMin(element);
-      const currentQuote = config.getCurrentQuote(element);
-      config.addSymbolToTrack(element, minValue, maxValueInput);
-    });
-
-    minButtonEl.addEventListener("click", (e) => {
-      e.preventDefault();
-      const minInputEl = cardDiv.querySelector(".card-min-input");
-      const minValueInput = minInputEl.value;
-      const maxValue = config.getMax(element);
-      const currentQuote = config.getCurrentQuote(element);
-      config.addSymbolToTrack(element, minValueInput, maxValue);
-    });
+    renderCard(id, symbolCoin, quote, imageLogo);
+    minAndMaxValues(id);
   }
   setInterval(async function () {
     const updatedQuotes = await getQuotes(config.trackSymbols);
     config.updateAndCheckQuotes(updatedQuotes);
-  }, 5000);
+  }, 30000);
 }
 
 main();
