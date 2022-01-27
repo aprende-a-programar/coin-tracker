@@ -73,7 +73,7 @@ const config = {
 function resetAlert(symbol, symbolConfig) {
   document.getElementById("icon-tag").href = "/images/cloud.png";
   document.title = "OK";
-  const cardDiv = document.getElementById(symbol);
+  const cardDiv = document.getElementById("card" + symbol);
   const circleIcon = cardDiv.querySelector(".circle");
 
   if (document.title === "OK") {
@@ -86,7 +86,7 @@ function fireAlert(symbol, symbolConfig) {
   console.log("FIRE!!!!", symbol, symbolConfig);
   document.getElementById("icon-tag").href = "/images/fire.png";
   document.title = symbol + ":" + symbolConfig.currentQuote;
-  const cardDiv = document.getElementById(symbol);
+  const cardDiv = document.getElementById("card" + symbol);
   const circleIcon = cardDiv.querySelector(".circle");
   circleIcon.classList.add("circle-icon-alert");
 }
@@ -165,7 +165,7 @@ function renderCard(id, symbol, quote, logo) {
   //Card DIV
   const cardDiv = document.createElement("div");
   cardDiv.classList.add("card");
-  cardDiv.id = id;
+  cardDiv.id = "card" + id;
 
   //Create BUTTON CARD CROSS
   const buttonCross = document.createElement("button");
@@ -256,7 +256,7 @@ async function addCoin(id, symbol, quote, logo) {
   addButtonEl.addEventListener("click", (e) => {
     e.preventDefault();
     renderCard(id, symbol, quote, logo);
-    const cardDiv = document.getElementById(id);
+    const cardDiv = document.getElementById("card" + id);
     config.addSymbolToTrack(id, 0, 0);
     minAndMaxValues(id);
   });
