@@ -16,7 +16,6 @@ const config = {
   addSymbolToTrack(id, min, max) {
     this.trackSymbols[id] = {
       currentQuote: 0,
-
       alert: {
         min,
         max,
@@ -252,7 +251,7 @@ function renderCard(id, symbol, quote, logo) {
     config.removeSymbolToTrack(id);
   });
 }
-function addCoin(id, symbol, quote, logo) {
+async function addCoin(id, symbol, quote, logo) {
   const addButtonEl = document.getElementById("add-button" + id);
   addButtonEl.addEventListener("click", (e) => {
     e.preventDefault();
@@ -285,8 +284,6 @@ function minAndMaxValues(element) {
 
 async function main() {
   config.loadPersistedConfig();
-  //mock inicial
-  config.addSymbolToTrack("bitcoin", 0, 0);
   const idArray = config.getTrackSymbols();
   searchAndAddCoin();
   for (let i = 0; i < idArray.length; i++) {
