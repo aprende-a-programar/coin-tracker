@@ -28,7 +28,11 @@ const config = {
   },
   loadPersistedConfig() {
     const saved = localStorage.getItem("track-config");
-    this.trackSymbols = JSON.parse(saved);
+    if (saved == null || saved == "" || saved == "null") {
+      return (this.trackSymbols = {});
+    } else {
+      this.trackSymbols = JSON.parse(saved);
+    }
   },
   getTrackSymbols() {
     const trackSymbols = [];
