@@ -1,7 +1,14 @@
 # Coin Tracker
 
-Para esta misión necesitamos crear una web utilizando HTML, CSS y Javascript (sin frameworks/librerías) que te permita buscar acciones/monedas o cualquier asset, de ahora en más llamados "monedas", usando una API gratuita como la de https://finnhub.io/docs/api/quote (o cualquier otra que te sea práctica) y agregarla a un listado de “monedas” que quieras seguir.
+## Página web
 
+https://arielgol.github.io/coin-tracker/
+
+#### Documentación de la API de Coin Gecko
+
+https://api.coingecko.com/api/v3
+
+Para esta misión necesitamos crear una web utilizando HTML, CSS y Javascript (sin frameworks/librerías) que te permita buscar acciones/monedas o cualquier asset, de ahora en más llamados "monedas", usando una API gratuita como la de https://finnhub.io/docs/api/quote (o cualquier otra que te sea práctica) y agregarla a un listado de “monedas” que quieras seguir.
 
 La webapp debe consultar constantemente a la API para pedirle los valores actualizados y reflejarlos en la UI. Al mismo tiempo tendremos que poder configurar alertas para cada “moneda” que estemos siguiendo utilizando valores máximos y/o mínimos. Para notificar que una de las monedas está fuera de los límites vamos a modificar el favicon de la web (el que se muestra en la pestaña del navegador) para que podamos hacer seguimiento simplemente teniendo una pestaña abierta ¡En otras misiones llevaremos este esquema de notificaciones mucho más lejos!
 
