@@ -170,6 +170,7 @@ function renderCard(id, symbol, quote, logo) {
   const cardDiv = document.createElement("div");
   cardDiv.classList.add("card");
   cardDiv.id = "card" + id;
+
   // Create circle-icon DIV
   const circleIcon = document.createElement("div");
   circleIcon.classList.add("circle");
