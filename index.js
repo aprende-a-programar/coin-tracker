@@ -76,11 +76,11 @@ const config = {
 
 function resetAlert(symbol, symbolConfig) {
   document.getElementById("icon-tag").href = "/images/cloud.png";
-  document.title = "OK";
+  document.title = "☁️OK";
   const cardDiv = document.getElementById("card" + symbol);
   const circleIcon = cardDiv.querySelector(".circle");
 
-  if (document.title === "OK") {
+  if (document.title === "☁️OK") {
     circleIcon.classList.remove("circle-icon-alert");
     circleIcon.classList.add("circle-icon");
   }
@@ -89,7 +89,7 @@ function resetAlert(symbol, symbolConfig) {
 function fireAlert(symbol, symbolConfig) {
   console.log("FIRE!!!!", symbol, symbolConfig);
   document.getElementById("icon-tag").href = "/images/fire.png";
-  document.title = symbol + ":" + symbolConfig.currentQuote;
+  document.title = "🔥" + symbol + ":" + symbolConfig.currentQuote;
   const cardDiv = document.getElementById("card" + symbol);
   const circleIcon = cardDiv.querySelector(".circle");
   circleIcon.classList.add("circle-icon-alert");
