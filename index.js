@@ -170,6 +170,11 @@ function renderCard(id, symbol, quote, logo) {
   const cardDiv = document.createElement("div");
   cardDiv.classList.add("card");
   cardDiv.id = "card" + id;
+  // Create circle-icon DIV
+  const circleIcon = document.createElement("div");
+  circleIcon.classList.add("circle");
+  circleIcon.id = id;
+  cardDiv.appendChild(circleIcon);
 
   //Create BUTTON CARD CROSS
   const buttonCross = document.createElement("button");
@@ -177,11 +182,6 @@ function renderCard(id, symbol, quote, logo) {
   buttonCross.classList.add("card-cross");
   buttonCross.id = id;
   cardDiv.appendChild(buttonCross);
-  // Create circle-icon DIV
-  const circleIcon = document.createElement("div");
-  circleIcon.classList.add("circle");
-  circleIcon.id = id;
-  cardDiv.appendChild(circleIcon);
 
   //Create coin-logo DIV
   const coinLogoDiv = document.createElement("div");

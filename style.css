@@ -276,7 +276,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
-  top: 0%;
+  top: -35%;
   animation: parpadear 1s ease-in-out;
 }
 
@@ -290,20 +290,15 @@ body {
   }
 }
 
-@media(min-width:768px) {
-  .circle-icon-alert {
-    top: 0%;
-  }
-}
 
 
 
 .card {
   background-color: #232323;
   border-radius: 8px;
-  height: 80%;
   display: grid;
-  padding: 10px;
+  padding: 3px;
+  height: 72%;
 }
 
 .card-cross {
@@ -335,6 +330,7 @@ body {
 
 .coin-name-card {
   font-size: 14px;
+  word-break: unset;
 }
 
 .coin-name {
