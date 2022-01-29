@@ -176,7 +176,7 @@ body {
   }
 }
 
-}
+
 
 
 .track-container {
@@ -279,6 +279,12 @@ body {
 
 .circle-icon {
   display: none;
+}
+
+@media(min-width:768px) {
+  .logo_card {
+    width: 80px;
+  }
 }
 
 .circle-icon-alert {
